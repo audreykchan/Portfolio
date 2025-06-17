@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Laptop Stand</title>
+        <link rel="stylesheet" href="prj2.css?v=2">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+        <link rel="icon" href="assets/favicon.png" type="image/png">
+    </head>
+
+    <body>
+        <script type="module" src="prj2.js"></script>
+
+        <div id="top-navbar">
+            <nav>
+              <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="active"><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+              </ul>
+            </nav>
+        </div>
+
+        <div class="back-arrow">
+            <a href="projects.html">&#60; back</a>
+        </div>
+
+            <!-- LEFT PANEL -->
+            <div class="split-container">
+                <!-- LEFT PANEL -->
+                <div class="left-panel">
+                  <div class="tabs-wrapper">
+                    <div class="tabs">
+                      <button class="tab" data-index="0">Overview</button>
+                      <button class="tab" data-index="1">Problem</button>
+                      <button class="tab" data-index="2">Design</button>
+                      <button class="tab" data-index="3">Implementation</button>
+                      <button class="tab" data-index="4">Results</button>
+                    </div>
+                    <div id="stepText">NotesHub is an anonymous, free study-material exchange that centralizes lecture notes, past exams and problem sets by course and professor, then surface-ranks the best content with Reddit-style voting. It drove over 100 uploads after its first 30 days of deployment.</div>
+                  </div>
+                </div>
+              
+                <!-- RIGHT PANEL -->
+                <div class="right-panel">
+                  <div class="media-container">
+
+                    <section class="media-section" data-index="0">
+                      <video
+                        src="assets/laptop.mp4"
+                        loop autoplay muted playsinline>
+                        Video unsupported by browser.
+                    </video>
+                    </section>
+
+                    <section class="media-section" data-index="1">
+                      <img src="assets/competitors.png" alt="Other laptop stands in the market">
+                    </section>
+
+                    <section class="media-section" data-index="2">
+                        <video
+                            src="assets/360-joint.mp4"
+                            loop autoplay muted playsinline>
+                            Video unsupported by browser.
+                        </video>
+                    </section>
+
+                    <section class="media-section" data-index="3">
+                      <img src="assets/top.png" alt="Top base plate design with ventilation slots and front lip">
+                    </section>
+
+                    <section class="media-section" data-index="4">
+                        <video
+                        src="assets/progress.mp4"
+                        loop autoplay muted playsinline>
+                        Video unsupported by browser.
+                        </video>
+                    </section>
+
+                  </div>
+                </div>
+            </div>
+              
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                  const tabs          = Array.from(document.querySelectorAll('.tab'));
+                  const descEl        = document.getElementById('stepText');
+                  const mediaSections = Array.from(document.querySelectorAll('.media-section'));
+                  const descriptions  = [
+                    `This precision-engineered, tool-free redesign of the classic laptop stand instantly adjusts from 0° to 90°, rotates 360° at its base, supports devices up to 5 kg, and features ventilation slots alongside a 17 mm gripped front lip for secure, cool performance. Its simplistic design reduces material usage by 31% and unit costs by 20% by reducing aluminum procurement and CNC machining cycles.`,
+                    `<ul>
+                        <li>Neck and back pain from prolonged laptop use at incorrect eye level</li>
+                        <li>Poor posture due to laptops being flat on desks, causing hunching</li>
+                        <li>Lack of adjustable height options on most cheap or fixed stands</li>
+                        <li>Laptops overheat due to poor airflow on flat surfaces</li>
+                        <li>Complex manufacturing for many existing portable models</li>
+                        <br>
+                        Together, these pain points underscore an urgent need for a laptop stand that’s both ergonomic and practical: one that elevates screens to eye level for healthy posture, offers easy height adjustability, promotes airflow to prevent overheating, and can be manufactured simply and affordably.
+                        <br>
+                    </ul>
+                    <strong>Fig:</strong> Many existing laptop stands in the market still have limited mobility and adjustability (low number of mobile joints) >>`,
+                    `Based on these problems, I made a preliminary product requirement doc with these key constraints:
+                    <ul>
+                        <br>
+                        <li>Must safely support up to a 5 kg, 10-17 in tablet/laptop</li>
+                        <li>Platform tilt 0°-90° for comfortable viewing</li>
+                        <li>Joints must lock at intermediate angles without slipping</li>
+                        <li>Base footprint  ≥ 200mm x 200mm for good stability</li>
+                        <li>Smooth rotation torque 0.02–0.05 N·m per joint (enough to hold but easy to adjust)</li>
+                        <li>Ventilation slots ≥10% surface area to enable passive heat dissipation from laptop’s underside</li>
+                        <li>Rotational joint of 360° for convenient orientation changes</li>
+                        <li>Front lip height 15–20 mm with silicone/rubber padding to stop slippage</li>
+                    </ul>
+                    <strong>Fig:</strong> Joint simulation showing the base plate joint changing its angle from 0-360° >>`,
+                    `
+                    <ul>
+                        <li>Defined key parameters in Fusion 360 (plate dimensions, link length, thicknesses, hole diameters) so the entire design can be updated by editing a single table</li>
+                        <li>Designed simplistic metal sheet top platform with ventilation slots, a 17 mm upturned front lip, and cut–pattern recesses for two rubber-pad bodies</li>
+                        <li>Engineered mechanical hinge joints in Fusion 360 by optimizing link geometry, pivot clearances, and material thickness to ensure smooth 0°–360° and 0-90° articulation, precise alignment, and robust load-bearing performance</li>
+                        <br>
+                    </ul>
+                    <strong>Fig:</strong> Top base plate design with ventilation slots and front lip >>`,
+                    `<a href="https://a360.co/4jFbwN6">↗ Click to see it in action!</a>
+                    <br>
+                    <br>
+                    <ul>
+                        <li>Reduced material usage by 31% without compromising mechanical stability</li>
+                        <li>Lowered raw-material costs by 20% per unit through reduced aluminum procurement and shorter CNC machining cycles</li>
+                        <br>
+                    <ul>
+                    `,
+                  ];
+                
+                  function selectTab(i) {
+                    // highlight tabs
+                    tabs.forEach((tab, idx) => {
+                      tab.classList.toggle('active', idx === i);
+                    });
+                    // update description
+                    descEl.innerHTML = descriptions[i];
+                    // show matching media
+                    mediaSections.forEach((sec, idx) => {
+                      sec.classList.toggle('active', idx === i);
+                    });
+                  }
+                
+                  // wire up clicks
+                  tabs.forEach((tab, idx) => {
+                    tab.addEventListener('click', () => selectTab(idx));
+                  });
+                
+                  // initialize
+                  selectTab(0);
+                });
+            </script>
+            
+          
+
+    </body>
+</html>

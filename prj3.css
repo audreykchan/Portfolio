@@ -1,0 +1,210 @@
+html, body {
+    background-color: #F1F2F1;
+    font-family: 'Inter', sans-serif;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+#top-navbar {
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 45%;
+    opacity: 1;
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    padding: 15px 20px;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 10;
+}
+
+#top-navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+  }
+
+  #top-navbar li a {
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    color: black;
+    font-weight: 500;
+    transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  #top-navbar li.active a {
+    color: black; /* Darker to show active */
+    border-bottom: 2px solid black;
+  }
+  
+  #top-navbar li a:hover {
+    color: #555;
+  }
+
+  .back-arrow {
+    top: 28px;
+    position: fixed;
+    left: 75px;
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: 'Inter', sans-serif;
+    padding: 15px 20px;
+    text-decoration: none !important;
+    cursor: pointer;
+    border-bottom: 5px !important;
+    letter-spacing: 0px;
+    z-index: 999;
+  }
+
+  .back-arrow a:hover {
+    color: #555;
+    cursor: pointer;
+  }
+
+    a {
+    color: black;
+    text-decoration: none;
+  }
+
+  /* PROCESS PAGE */
+
+  .split-container {
+    display: flex;
+    height: calc(100vh - 80px); /* adjusts for header height */
+    margin-top: 30px;
+  }
+  
+  /* LEFT PANEL */
+  .left-panel {
+    width: 50%;
+    position: sticky;
+    top: 300px;
+    left: 25px;
+    /* margin-top: 250px; /* where the tab starts */
+    height: calc(100vh - 100px);
+    display: flex;
+    justify-content: center;
+    background: inherit;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tabs-wrapper {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    gap: 1rem;
+    top: 0;
+    padding-top: 150px; /* change this to adjust left text height */
+    padding-left: 20px;
+  }
+
+  .tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    /*rectangular card */
+    background-color: #ececec;
+    border-radius: 16px;
+    padding: 10px;
+    box-shadow:  0 4px 8px rgba(0,0,0,0.1),    /* small drop shadow */
+                0 2px 4px rgba(0,0,0,0.05);
+    overflow: hidden;
+    flex: 0 0 auto;
+    margin-left: 7px; /* card's placement from left */
+  }
+  .tab {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    opacity: 0.4;
+    transition: opacity 0.3s;
+  }
+  .tab.active {
+    opacity: 1;
+    font-weight: 600;
+  }
+  hr {
+    border-bottom: 0px solid #000000;
+  }
+
+  #stepText {
+    font-size: 1rem;
+    line-height: 1.4;
+    padding-top: 12px;
+    left: 20px;
+    padding-left: 25px; /* how far from left side of screen */
+    margin-top: 0px;
+    width: 100%;
+    word-wrap: break-word;
+    white-space: normal;
+    flex: 1 1 auto;
+    overflow-y: auto;
+  }
+
+  #stepText ul{
+    padding-top: 0px;
+    margin-top: 0px;
+  }
+  
+  /* RIGHT PANEL */
+  .right-panel {
+    width: 50%;
+    position: relative;
+    background: inherit;
+    flex-direction: column;
+    display: flex;
+  }
+  .media-container {
+    width: 100%;
+    overflow-y: hidden; /* hide scrollbar */
+    scrollbar-width: none; 
+    top: 0;
+    left: 0;
+    flex: 1;
+    position: relative;
+  }
+
+  /* resize media section h: 50%, w:*/
+  .media-section { 
+    height: 75%;
+    width: 95%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 60px; left: 10px;
+  }
+
+  .media-section.active {
+    display: flex;
+  }
+  .media-section img,
+  .media-section video, .media-section iframe {
+    width: 100%;
+    height: 60%;
+    max-width: 80%;
+    max-height: auto;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    top: -10px;
+    left: -10px;
+    color: inherit;
+  }
+
+  .split-container > .left-panel,
+  .split-container > .right-panel {
+    flex: 0 0 50%;
+    max-width: 50%;
+    min-width: 0;    /* ✨ allow shrinking below content min size */
+  }

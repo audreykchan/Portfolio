@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <title>Audrey's Portfolio</title>
+    <link rel="icon" href="assets/favicon.png" type="image/png">
+</head>
+
+<body>
+  <canvas id="canvas3d"></canvas>
+
+  <script type="module">
+    import { Application } from 'https://unpkg.com/@splinetool/runtime@latest/build/runtime.js';
+  
+    const canvas = document.getElementById('canvas3d');
+    const app = new Application(canvas);
+    app.load('https://prod.spline.design/DYJjlEtuTKNcer7V/scene.splinecode');
+  </script>
+  
+  <div id="intro-container">
+    Hi! I'm Audrey, welcome to my<br>
+    portfolio! I'm an engineering student<br>
+    at Columbia interested in<br>
+    <span id="typed-text" class="gray-text"></span><span id="cursor">|</span>
+    <br><br>
+    <div id="pdf">
+        Short on time?<br>
+        <a href= "https://drive.google.com/file/d/1lEvPm9qxpnfVZ0BrS0oA1ruLI4wTSX8G/view?usp=sharing"><i class="fas fa-external-link"></i>Download the condensed version</a>
+      </div>
+  </div>  
+
+  <script src="script.js"></script>
+
+  <div id="right-navbar">
+    <nav>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div id="nav-footer">
+      <span class="mail-icon">✉️</span>
+      <a href="mailto:audreykc144@gmail.com">
+      Say Hello</a>
+    </div>
+  </div>
+  
+
+
+</body>
+</html>

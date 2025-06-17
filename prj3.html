@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Portable Blender</title>
+        <link rel="stylesheet" href="prj2.css?v=2">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+        <link rel="icon" href="assets/favicon.png" type="image/png">
+    </head>
+
+    <body>
+        <script type="module" src="prj2.js"></script>
+
+        <div id="top-navbar">
+            <nav>
+              <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="active"><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+              </ul>
+            </nav>
+        </div>
+
+        <div class="back-arrow">
+            <a href="projects.html">&#60; back</a>
+        </div>
+
+            <!-- LEFT PANEL -->
+            <div class="split-container">
+                <!-- LEFT PANEL -->
+                <div class="left-panel">
+                  <div class="tabs-wrapper">
+                    <div class="tabs">
+                      <button class="tab" data-index="0">Overview</button>
+                      <button class="tab" data-index="1">Problem</button>
+                      <button class="tab" data-index="2">Design</button>
+                      <button class="tab" data-index="3">Implementation</button>
+                      <button class="tab" data-index="4">Results</button>
+                    </div>
+                    <div id="stepText">In response to the growing “on-the-go” nutrition market, where commuters and gym-goers sacrifice fresh smoothies for expensive, wasteful RTD drinks, we’ve developed a redesigned portable blender that delivers true single-serve convenience without compromise. This Fusion 360-modeled, square-to-round bottle body uses flat walls and corners to eliminate vortex dead-zones, while a snap-fit SPI-400-style threading and dishwasher-safe blade port ensure leak-proof sealing and easy cleanup. At under 10" tall, it fits most cup holders and backpacks while reducing costs by 14%, and its modular design enables bottle-only dishwasher cycles without exposing electronics. </div>
+                  </div>
+                </div>
+              
+                <!-- RIGHT PANEL -->
+                <div class="right-panel">
+                  <div class="media-container">
+
+                    <section class="media-section" data-index="0">
+                      <video
+                        src="assets/deconstruct.mp4"
+                        loop autoplay muted playsinline>
+                        Video unsupported by browser.
+                    </video>
+                    </section>
+
+                    <section class="media-section" data-index="1">
+                      <img src="assets/reviews.png" alt="Reviews from preexisting blenders and shakers">
+                    </section>
+
+                    <section class="media-section" data-index="2">
+                        <video
+                            src="assets/anatomy.mp4"
+                            loop autoplay muted playsinline>
+                            Video unsupported by browser.
+                        </video>
+                    </section>
+
+                    <section class="media-section" data-index="3">
+                        <video
+                            src="assets/threading.mp4"
+                            loop autoplay muted playsinline>
+                            Video unsupported by browser.
+                        </video>
+                    </section>
+
+                    <section class="media-section" data-index="4">
+                        <video
+                        src="assets/rotation.mp4"
+                        loop autoplay muted playsinline>
+                        Video unsupported by browser.
+                        </video>
+                    </section>
+
+                  </div>
+                </div>
+            </div>
+              
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                  const tabs          = Array.from(document.querySelectorAll('.tab'));
+                  const descEl        = document.getElementById('stepText');
+                  const mediaSections = Array.from(document.querySelectorAll('.media-section'));
+                  const descriptions  = [
+                    `In response to the growing “on-the-go” nutrition market, where commuters and gym-goers sacrifice fresh smoothies for expensive, wasteful RTD drinks, we’ve developed a redesigned portable blender that delivers true single-serve convenience without compromise. This Fusion 360-modeled, square-to-round bottle body uses flat walls and corners to eliminate vortex dead-zones, while a snap-fit SPI-400-style threading and dishwasher-safe blade port ensure leak-proof sealing and easy cleanup. At under 10" tall, it fits most cup holders and backpacks while reducing costs by 14%, and its modular design enables bottle-only dishwasher cycles without exposing electronics. `,
+                    `<ul>
+                        <li>Commuters and gym‑goers skip nutritious drinks because countertop blenders aren’t convenient to carry</li>
+                        <li>RTD protein shakes and smoothies create plastic waste and cost $4‑8 each; users want fresh, cheaper portions</li>
+                        <li>Dorm rooms, offices, and van‑life setups lack room (or outlets) for full‑size appliances</li>
+                        <li>Shaker balls leave gritty protein powder, seeds, and frozen fruit chunks</li>
+                        <br>
+                        These pain points highlight a clear demand for a compact, cost-effective blending solution that delivers fresh, smooth nutrition on the go without the bulk, waste, or grittiness of today’s options.
+                        <br>
+                    </ul>
+                    <strong>Fig:</strong> Critical reviews of protein shakes and portable blenders currently available >>`,
+                    `Based on these problems, I made a preliminary product requirement doc with these key constraints:
+                    <ul>
+                        <br>
+                        <li>Flat walls + corners bounce ingredients back toward blades, reducing vortex dead‑zones; shape also prevents rolling and improves grip</li>
+                        <li>True single‑serve portion while staying compact enough for cup‑holders and backpacks</li>
+                        <li>Allows bottle-only dishwasher mode by plugging blade port, eliminating motor exposure to water</li>
+                        <li>Fits most car cup holders and cycle bottle cages</li>
+                        <li>Precise threading for secure closures</li>
+                    </ul>
+                    <strong>Fig:</strong> Part diagram of blender prototype >>`,
+                    `
+                    <ul>
+                        <li>Designed a fully parametric square-to-round bottle body in Fusion 360, enabling rapid iteration on wall thickness, loft geometry, and thread pitch </li>
+                        <li>Engineered custom helical threading (SPI-400-style) to reduce cross-threading risk and ensure a tight, repeatable seal during high-vibration blending</li>
+                    </ul>
+                    <strong>Fig:</strong> Custom right-hand SPI-400 threading profile >>`,
+                    `<a href="https://a360.co/3FONlhn">↗ Click to see it in action!</a>
+                    <br>
+                    <br>
+                    Enabled cost savings of 14% by designing custom snap-fit thread joints to minimize mold complexity and enhance durability based on older models
+                    `,
+                  ];
+                
+                  function selectTab(i) {
+                    // highlight tabs
+                    tabs.forEach((tab, idx) => {
+                      tab.classList.toggle('active', idx === i);
+                    });
+                    // update description
+                    descEl.innerHTML = descriptions[i];
+                    // show matching media
+                    mediaSections.forEach((sec, idx) => {
+                      sec.classList.toggle('active', idx === i);
+                    });
+                  }
+                
+                  // wire up clicks
+                  tabs.forEach((tab, idx) => {
+                    tab.addEventListener('click', () => selectTab(idx));
+                  });
+                
+                  // initialize
+                  selectTab(0);
+                });
+            </script>
+            
+          
+
+    </body>
+</html>
