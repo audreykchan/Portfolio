@@ -121,7 +121,10 @@ video {
 }
 
 .column.single {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  gap: 2rem;
 }
 
 /* Card Styling */
