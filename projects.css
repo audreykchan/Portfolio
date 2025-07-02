@@ -1,9 +1,9 @@
 html, body {
     background-color: #F1F2F1;
     font-family: 'Inter', sans-serif;
-    height: 300vh;
+    max-height: 250vh;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 #top-navbar {
