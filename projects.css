@@ -1,7 +1,7 @@
 html, body {
     background-color: #F1F2F1;
     font-family: 'Inter', sans-serif;
-    max-height: 250vh;
+    max-height: 300vh;
     overflow-x: hidden;
     overflow-y: auto;
 }
