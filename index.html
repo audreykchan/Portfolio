@@ -9,15 +9,15 @@
 </head>
 
 <body>
-  <canvas id="canvas3d"></canvas>
 
-  <script type="module">
-    import { Application } from 'https://unpkg.com/@splinetool/runtime@latest/build/runtime.js';
-  
-    const canvas = document.getElementById('canvas3d');
-    const app = new Application(canvas);
-    app.load('https://prod.spline.design/DYJjlEtuTKNcer7V/scene.splinecode');
-  </script>
+  <div id="video">
+    <video
+      src="assets/indexvid.mp4"
+      loop autoplay muted playsinline>
+      Video unsupported by browser.
+    </video>
+  </div>
+
   
   <div id="intro-container">
     Hi! I'm Audrey, welcome to my<br>
@@ -47,7 +47,6 @@
       Say Hello</a>
     </div>
   </div>
-  
 
 
 </body>
