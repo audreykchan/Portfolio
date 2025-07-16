@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Supply Chain Dashboard</title>
+        <link rel="stylesheet" href="prj5.css?v=2">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+        <link rel="icon" href="assets/favicon.png" type="image/png">
+    </head>
+
+    <body>
+        <script type="module" src="prj5.js"></script>
+
+        <div id="top-navbar">
+            <nav>
+              <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="active"><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+              </ul>
+            </nav>
+        </div>
+
+        <div class="back-arrow">
+            <a href="projects.html">&#60; back</a>
+        </div>
+
+            <!-- LEFT PANEL -->
+            <div class="split-container">
+                <!-- LEFT PANEL -->
+                <div class="left-panel">
+                  <div class="tabs-wrapper">
+                    <div class="tabs">
+                      <button class="tab" data-index="0">Overview</button>
+                      <button class="tab" data-index="1">Problem</button>
+                      <button class="tab" data-index="2">Design</button>
+                      <button class="tab" data-index="3">Implementation</button>
+                      <button class="tab" data-index="4">Results</button>
+                    </div>
+                    <div id="stepText">NotesHub is an anonymous, free study-material exchange that centralizes lecture notes, past exams and problem sets by course and professor, then surface-ranks the best content with Reddit-style voting. It drove over 100 uploads after its first 30 days of deployment.</div>
+                  </div>
+                </div>
+              
+                <!-- RIGHT PANEL -->
+                <div class="right-panel">
+                  <div class="media-container">
+
+                    <section class="media-section" data-index="0">
+                      <video
+                        src="assets/prj5results.mp4"
+                        loop autoplay muted playsinline>
+                        Video unsupported by browser.
+                    </video>
+                    </section>
+
+                    <section class="media-section" data-index="1">
+                      <img src="assets/prj5problem.png" alt="Preexisting spreadsheet supply chain log">
+                    </section>
+
+                    <section class="media-section" data-index="2">
+                        <img src="assets/prj5design.png" alt="inventory by value">
+                    </section>
+
+                    <section class="media-section" data-index="3">
+                      <img src="assets/prj5implementation.png" alt="stock health score logic">
+                    </section>
+
+                    <section class="media-section" data-index="4">
+                        <video
+                        src="assets/prj5overview.mp4"
+                        loop autoplay muted playsinline>
+                        Video unsupported by browser.
+                        </video>
+                    </section>
+
+                  </div>
+                </div>
+            </div>
+              
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                  const tabs          = Array.from(document.querySelectorAll('.tab'));
+                  const descEl        = document.getElementById('stepText');
+                  const mediaSections = Array.from(document.querySelectorAll('.media-section'));
+                  const descriptions  = [
+                    `This is a lightweight, modular supply chain dashboard to help an early-stage startup monitor inventory health during pilot rounds. The tool features live filtering by product and category, reorder point alerts, inventory value tracking, and interactive charts that visualize product distribution and stock trends. Designed with scalability in mind, it integrates with a SQLite backend and includes exportable reports for team-wide visibility.
+                    <br><br><strong>Note:</strong> This is an anonymized version of a dashboard I built during my internship at a stealth-stage startup. In compliance with NDA, all data, branding, and product details have been replaced with placeholders but the logic and structure are identical to the version I implemented internally.`,
+                    `Before building this dashboard, the startup was relying on a shared Excel sheet to manage inventory during early pilot rounds. While sufficient for the small team, this setup quickly revealed serious limitations as the business began scaling its operations. 
+                    <ul>
+                        <li>Every stock change, reorder check, and report had to entered manually</li>
+                        <li>Multiple team members editing the same sheet caused version conflicts and accidental overwrites</li>
+                        <li>As more SKUs were added, the spreadsheet became cluttered</li>
+                        <li>Different versions of the same sheet were stored and sent across different inboxes and folders, which made organization inefficient</li>
+                        <li>The Excel sheet didn't have historical data, making it hard to forecast and backtrack</li>
+                        <br>
+                        Together, these inefficiencies pointed to a need for a clear, automated dashboard to support the team as it scaled its operations
+                        <br>
+                    </ul>
+                    <strong>Fig:</strong> Preexisting (anonymized) Excel supply chain dashboard >>`,
+                    `Based on these problems, I made a preliminary product requirement doc with these key constraints:
+                    <ul>
+                        <br>
+                        <li>Live inventory visibility that displays updated stock levels for all SKUs</li>
+                        <li>Automatic alert that flags items below their reorder point</li>
+                        <li>Product level filtering to allow members to filter by product name or category</li>
+                        <li>Inventory value calculations (unit cost * quantity)</li>
+                        <li>Downloadable reports for reports and sharing</li>
+                        <li>Summary metrics to showcase total SKUs, total inventory value, and number of low stock items</li>
+                    </ul>
+                    <strong>Fig:</strong> Pie chart visualization of inventory distribution by category and real-time reorder alerts >>`,
+                    `<a href="https://github.com/audreykchan/supplychaindash/tree/main" target="_blank" rel="noopener noreferrer">↗ See the GitHub repo!</a>
+                    <br><br>
+                    <ul>
+                        <li>Set up SQLite database by parsing inventory data from original csv file</li>
+                        <li>Calculated low stock flag for alerts using boolean mask comparison (df["current stock"] <= df["reorder point"])</li>
+                        <li>Computed stock health score as 100 * (in-stock products / total products) and rendered it as percentage on a progress bar for lightweight UX</li>
+                        <br>
+                    </ul>
+                    <strong>Fig:</strong> Stock health score logic >>`,
+                    `<a href="https://audreykchan-supplychaindash-supply-dashboard-kqcw4m.streamlit.app/" target="_blank" rel="noopener noreferrer">↗ Click to see the web dashboard!</a>
+                    <br>
+                    <br>
+                    <ul>
+                        <li>Enabled real time inventory health visibility in <3 seconds across 30+ SKUs</li>
+                        <li>Saved 2+ hours per week in manual tracking and reporting</li>
+                        <li>Achieved 100% team adoption in under 2 weeks without additional training</li>
+                        <br>
+                    <ul>
+                    `,
+                  ];
+                
+                  function selectTab(i) {
+                    // highlight tabs
+                    tabs.forEach((tab, idx) => {
+                      tab.classList.toggle('active', idx === i);
+                    });
+                    // update description
+                    descEl.innerHTML = descriptions[i];
+                    // show matching media
+                    mediaSections.forEach((sec, idx) => {
+                      sec.classList.toggle('active', idx === i);
+                    });
+                  }
+                
+                  // wire up clicks
+                  tabs.forEach((tab, idx) => {
+                    tab.addEventListener('click', () => selectTab(idx));
+                  });
+                
+                  // initialize
+                  selectTab(0);
+                });
+            </script>
+            
+          
+
+    </body>
+</html>

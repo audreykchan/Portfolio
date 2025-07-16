@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>AI/ML Price Optimization Tool</title>
+        <link rel="stylesheet" href="prj6.css?v=2">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+        <link rel="icon" href="assets/favicon.png" type="image/png">
+    </head>
+
+    <body>
+        <script type="module" src="prj6.js"></script>
+
+        <div id="top-navbar">
+            <nav>
+              <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="active"><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+              </ul>
+            </nav>
+        </div>
+
+        <div class="back-arrow">
+            <a href="projects.html">&#60; back</a>
+        </div>
+
+            <!-- LEFT PANEL -->
+            <div class="split-container">
+                <!-- LEFT PANEL -->
+                <div class="left-panel">
+                  <div class="tabs-wrapper">
+                    <div class="tabs">
+                      <button class="tab" data-index="0">Overview</button>
+                      <button class="tab" data-index="1">Problem</button>
+                      <button class="tab" data-index="2">Design</button>
+                      <button class="tab" data-index="3">Implementation</button>
+                      <button class="tab" data-index="4">Results</button>
+                    </div>
+                    <div id="stepText">NotesHub is an anonymous, free study-material exchange that centralizes lecture notes, past exams and problem sets by course and professor, then surface-ranks the best content with Reddit-style voting. It drove over 100 uploads after its first 30 days of deployment.</div>
+                  </div>
+                </div>
+              
+                <!-- RIGHT PANEL -->
+                <div class="right-panel">
+                  <div class="media-container">
+
+                    <section class="media-section" data-index="0">
+                      <video
+                        src="assets/p6overview.mp4"
+                        loop autoplay muted playsinline
+                        >
+                        Video unsupported by browser.
+                    </video>
+                    </section>
+
+                    <section class="media-section" data-index="1">
+                      <video
+                        src="assets/p6problem.mp4"
+                        loop autoplay muted playsinline>
+                        Video unsupported by browser.
+                    </video>
+                    </section>
+
+                    <section class="media-section" data-index="2">
+                        <video 
+                          src="assets/p6design.mp4"
+                          loop autoplay muted playsinline>
+                          Video unsupported by browser.
+                        </video>
+                    </section>
+
+                    <section class="media-section" data-index="3">
+                      <img src="assets/p6implementation.png" alt="Image unsupported">
+                    </section>
+
+                    <section class="media-section" data-index="4">
+                        <img src="assets/p6.png" alt="Image unsupported">
+                    </section>
+
+                  </div>
+                </div>
+            </div>
+              
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                  const tabs          = Array.from(document.querySelectorAll('.tab'));
+                  const descEl        = document.getElementById('stepText');
+                  const mediaSections = Array.from(document.querySelectorAll('.media-section'));
+                  const descriptions  = [
+                    `This is an interactive, AI-powered dashboard that models demand behavior and estimates price elasticity using transaction data. Users can filter by product category, view fitted demand and revenue curves, calculate elasticity at various price points, and export results for internal reporting all without writing code. The underlying model leverages linear regression to simulate price sensitivity and identify revenue-maximizing pricing zones across multiple product tiers.
+                    <br><br><strong>Note:</strong> This is an anonymized version of a tool I built during my internship at a stealth-stage startup. In compliance with NDA, all data, branding, and transaction details have been replaced with placeholders but the logic and structure are identical to the version I implemented internally.`,
+                    `
+                    <ul>
+                        <li>Manual pricing analysis was slow and error-prone, often taking 2+ days to produce basic insights</li>
+                        <li>Team lacked visibility into how price changes impact demand and total revenue</li>
+                        <li>Pricing decisions relied heavily on intuition or spreadsheets, leading to inconsistent outcomes</li>
+                        <li>Existing tools lacked the ability to segment by product category, making granular analysis difficult</li>
+                        <li>There was no fast, self-service way to quantify the impact of raising or lowering prices</li>
+                        <br>
+                        Together, these inefficiencies pointed to a need for a dynamic price forecasting/optimization tool that would enable faster, data-driven pricing decisions.
+                        <br>
+                    </ul>
+                    <strong>Fig:</strong> Raw transaction data alone makes it difficult to extract actionable insights and inform strategic pricing decisions. Anonymized transaction data >>`,
+                    `Based on these problems, I made a preliminary product requirement doc with these key constraints:
+                    <ul>
+                        <br>
+                        <li>Enable fast, no code pricing analysis</li>
+                        <li>Visualization of demand and revenue curves from historical transaction data</li>
+                        <li>Estimation of price elasticity of demand using ML</li>
+                        <li>Filtering by product to support segmented analysis</li>
+                        <li>Exportable filtered outputs (csv transactions and graph images) for reporting and documentation</li>
+                        <li>Minimize analyst dependency by automating common price queries</li>
+                    </ul>
+                    <strong>Fig:</strong> Interactive price slider that dynamically projects sales volume and revenue in under 3 seconds >>`,
+                    `<a href="https://github.com/audreykchan/priceforecasting?tab=readme-ov-file" target="_blank" rel="noopener noreferrer">↗ See the GitHub repo!</a>
+                    <br><br>
+                    <ul>
+                        <li>Used pandas to load and preprocess transaction data from a local csv file</li>
+                        <li>Aggregated sales data by proce bin to compute average quantity sold and transaction count per bin</li>
+                        <li>Fitted a linear regression model (via scikit-learn) to model the relationship between price and quantity sold</li>
+                        <li>Calculated price elasticity of demand using the economic formula: (dQ/dP * P/Q)</li>
+                        <li>Enabled CSV and PNG export of filtered data and fitted curve using base64 encoding and BytesIO buffers</li>
+                        <br>
+                    </ul>
+                    <strong>Fig:</strong> ML linear regression used to predict revenue of the next 7 days>>`,
+                    `<a href="https://audreykchan-priceforecasting-price-tool-xmtp6p.streamlit.app/" target="_blank" rel="noopener noreferrer">↗ Click to see the web dashboard!</a>
+                    <br>
+                    <br>
+                    <ul>
+                        <li>Reduced time spent generating elasticity reports from ~2 days (manual spreadsheet workflows) to under 30 seconds using a self-service dashboard</li>
+                        <li>Supported segmented analysis for 5 product categories, uncovering unique elasticity profiles per vertical</li>
+                        <li>Replaced gut-feel pricing decisions with interpretable ML models, improving revenue impact estimates</li>
+                        <br>
+                    <ul>
+                    `,
+                  ];
+                
+                  function selectTab(i) {
+                    // highlight tabs
+                    tabs.forEach((tab, idx) => {
+                      tab.classList.toggle('active', idx === i);
+                    });
+                    // update description
+                    descEl.innerHTML = descriptions[i];
+                    // show matching media
+                    mediaSections.forEach((sec, idx) => {
+                      sec.classList.toggle('active', idx === i);
+                    });
+                  }
+                
+                  // wire up clicks
+                  tabs.forEach((tab, idx) => {
+                    tab.addEventListener('click', () => selectTab(idx));
+                  });
+                
+                  // initialize
+                  selectTab(0);
+                });
+            </script>
+            
+          
+
+    </body>
+</html>
