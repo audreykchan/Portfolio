@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>NotesHub</title>
+        <title>CLIP</title>
         <link rel="stylesheet" href="project1.css?v=2">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,26 +49,27 @@
                   <div class="media-container">
 
                     <section class="media-section" data-index="0">
-                      <iframe
-                        width="100%"
-                        height="100%"
-                        src="https://www.youtube.com/embed/Wq10Wg14HBM"
-                        frameborder="0"
-                        allow="autoplay; encrypted-media"
-                        allowfullscreen
-                      ></iframe>
+                      <iframe width="994" height="559" src="https://www.youtube.com/embed/D1wYtTpmOc0" title="Introducing CLIP" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </section>
 
                     <section class="media-section" data-index="1">
-                      <img src="assets/chart.png" alt="Chart comparison between NotesHub and other note-sharing sites">
+                      <img src="assets/prj1problem.png" alt="Chart comparison between CLIP and other note-sharing sites">
                     </section>
 
                     <section class="media-section" data-index="2">
-                        <img src="assets/browse.jpg" alt="Sketched out UI layout of NotesHub's Browse page">
+                      <video
+                        src="assets/p1design.mp4"
+                        loop autoplay muted playsinline>
+                        Video unsupported by browser.
+                  </video>
                     </section>
 
                     <section class="media-section" data-index="3">
-                      <img src="assets/tools.png" alt="Tools used in project">
+                      <video
+                        src="assets/prj1implementation.mp4"
+                        loop autoplay muted playsinline>
+                        Video unsupported by browser.
+                    </video>
                     </section>
 
                     <section class="media-section" data-index="4">
@@ -89,44 +90,56 @@
                   const descEl        = document.getElementById('stepText');
                   const mediaSections = Array.from(document.querySelectorAll('.media-section'));
                   const descriptions  = [
-                    `NotesHub is an anonymous, free study-material exchange that centralizes lecture notes, past exams and problem sets by course and professor, then surface-ranks the best content with Reddit-style voting. It drove over 100 uploads after its first 30 days of deployment.`,
+                    `CLIP (Columbia's Learning & Information Platform) is the university’s first anonymous, peer-driven study material exchange. The platform enables Columbia and Barnard students to securely share notes, syllabi, past exams, study guides, and other academic resources all filtered by course and ranked by peer upvotes. CLIP enforces academic safeguards through strict access control (verified @columbia.edu / @barnard.edu emails), terms of service, and anonymous content reporting.
+                    <br><br>
+                    To incentivize high-quality contributions, CLIP uses a token-based system: students earn +2 tokens per upload and spend -1 token to unlock each file, creating a fair, contribution-driven content economy. Users can subscribe to specific courses to receive tailored uploads, making CLIP a centralized, high-signal academic resource hub powered by, and balanced by, the student body itself.`,
                     `<ul>
                         <li>Lack of centralized access to study materials</li>
                         <li>Same course number, different professor = completely different content</li>
                         <li>Preexisting note sharing platforms (like Coursehero) charge high fees for access</li>
-                        <li>98% prepare for exams using past exams and notes</li>
-                        <li>Only 21% have access to past study materials from upperclassmen friends</li>
+                        <li>98% of students asked for user research prepare for exams using past exams and notes</li>
+                        <li>Only 21% of students asked for user research have access to past study materials from upperclassmen friends</li>
                         <br>
-                        After chatting with over 20 students from all grade levels, it became clear that accessing study materials is a campus-wide struggle. 98% rely on past exams and notes, yet only 21% have consistent sources. Existing platforms are fragmented by professor and saddled with high fees, which leaves the vast majority scrambling for accessible resources.
+                        After chatting with ~20 students from all grade levels, it became clear that accessing study materials is a campus-wide struggle. 98% rely on past exams and notes, yet only 21% have consistent sources. Existing platforms are fragmented by professor and saddled with high fees, which leaves the vast majority scrambling for accessible resources.
                         <br>
                     </ul>
-                    <strong>Fig:</strong> Chart comparing NotesHub to other note-sharing sites >>`,
+                    <strong>Fig:</strong> Chart comparing CLIP to other note-sharing sites >>`,
                     `As an attempt to solve these gaps, I made a preliminary product requirement doc with these feature requirements:
                     <ul>
                         <br>
                         <li>Free access to all course materials</li>
-                        <li>Sorting system by course code & professor</li>
-                        <li>Allows students to upload notes, syllabi, past exams + solutions, cheat sheets</li>
+                        <li>Restrict access to verified email domains to ensure access is restricted to students of Columbia and Barnard's community</li>
+                        <li>Token system to incentivize students to contribute by uploading</li>
+                        <li>Sorting system by course code, professor, file label</li>
+                        <li>Allows students to upload notes, syllabi, past exams + solutions, study guides, cheat sheets</li>
                         <li>Upvotes & downvotes for each attachment to indicate how useful a material is (like Reddit)</li>
                         <li>Anonymous user access to maximize user comfort</li>
+                        <li>Course subscription for convenient access to select courses</li>
+                        <li>Thumbnail file previews for students to get a glimpse of the file's contents</li>
                         <br>
                     </ul>
-                    <strong>Fig:</strong> Rough sketch of the browse page using Shadcn/ui's library components >>`,
-                    `<a href="https://github.com/audreykchan/noteshubatcolumbia">↗ Click to see the GitHub Repo!</a>
+                    <strong>Fig:</strong> Token economy demonstrating that uploads = +2 tokens and unlocks = -1 token >>`,
+                    `<a href="https://github.com/audreykchan/clip">↗ Click to see the GitHub Repo!</a>
                     <br><br>
                     <ul>
-                        <li>Leveraged Supabase (PostgreSQL + Storage) for the backend, file uploads, and metadata</li>
-                        <li>Built a responsive, component‐driven frontend using React, Vite, TypeScript, Tailwind CSS, and Shadcn/ui for rapid UI development</li>
-                        <li>Enabled infinite scroll via “Load More” button powered by Supabase row counts, reducing initial payloads and improving Time to Interactive by 30%</li>
+                        <li>Leveraged Supabase (PostgreSQL) for the backend, enabling secure file uploads, token transactions, and upvote/downvote history</li>
+                        <li>Implemented secure user authentication via Supabase Auth, allowing only verified @columbia.edu and @barnard.edu email addresses to register and access the platform</li>
+                        <li>Integrated Resend to automate transactional email flows, including verification emails and password resets, ensuring smooth onboarding and account recovery</li>
+                        <li>Designed and deployed a token-based upload/download economy using Supabase’s Postgres backend</li>
+                        <li>Engineered an anonymous file upload system with metadata tagging, enabling students to post and search class-specific study materials without exposing identity</li>
+                        <li>Built a scalable course subscription feature, allowing students to follow specific classes and receive filtered uploads in real time</li>
                         <br>
+                        <strong>Fig:</strong> Supabase database >>
                     </ul>`,
-                    `<a href="https://noteshubcolumbia.com/" target="_blank" rel="noopener noreferrer">↗ Click to see the Website!</a>
+                    `<a href="https://clipcolumbia.cc/" target="_blank" rel="noopener noreferrer">↗ Click to see the Website!</a>
                     <br>
                     <br>
                     <ul>
-                      <li>Over 100 uploads after the first 30 days after deployment (early access)!</li>
-                      <li>Coordinating marketing team and performing security testing to ensure a seamless official launch in September 2025</li>
+                      <li>Coordinating a cross-functional marketing and outreach team to drive platform adoption for Fall 2025 launch</li>
+                      <li>Built a growing waitlist of interested users through early campus outreach and targeted messaging</li>
+                      <li>Developed internal moderation workflows (TOS, anonymous reporting) to proactively address content compliance and academic integrity risks</li>
                     </ul>
+                    <strong>Fig: </strong> First iteration of CLIP/Noteshub >>
                     `,
                   ];
                 
